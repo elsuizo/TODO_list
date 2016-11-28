@@ -1,24 +1,44 @@
-# Makefile
-# remember: all makefiles are
-# target: dependencies
-# 	action
-# NOTE: the Tab is important
-# NOTE: Comentary inline is not allowed
-#
-#
-#all: test
+# ------------------------------------------------
+# Makefile for C projects
+# ------------------------------------------------
 
-test: test.o list.o
-	gcc test.o list.o -o test 
+# project name (generate executable with this name)
+TARGET   = out
 
-list.o: list.c list.h
-	gcc -c list.c
+CC       = gcc
+# compiling flags here
+CFLAGS   = -std=c99 -Wall -I.
 
-test.o: test.c
-	gcc -c test.c
+LINKER   = gcc -o
+# linking flags here
+LFLAGS   = -Wall -I. -lm
 
-clean: 
-	rm *.o test
+# change these to proper directories where each file should be
+SRCDIR   = src
+INCDIR   = inc
+OBJDIR   = obj
+BINDIR   = bin
+
+SOURCES  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(INCDIR)/*.h)
+OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+rm       = rm -f
 
 
+$(BINDIR)/$(TARGET): $(OBJECTS)
+	@$(LINKER) $@ $(LFLAGS) $(OBJECTS)
+	@echo "Linking complete!"
 
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
+
+.PHONY: clean
+clean:
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
+
+.PHONY: remove
+remove: clean
+	@$(rm) $(BINDIR)/$(TARGET)
+	@echo "Executable removed!"
