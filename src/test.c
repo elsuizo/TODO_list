@@ -23,29 +23,34 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 ---------------------------------------------------------------------------*/
 
-#include <stdio.h>
-#include "../inc/list.h"
-
-/* TODO(elsuizo: 2016-11-27) ver porque no anda esta mierda */
-void destroy(void *data){
-  free(data);
-}
-
-void display_fucking_number(int* number) {
-   printf("The number is:%d\n", *number);
-}
+#include "../inc/listlib.h"
+#include "../inc/document.h"
 
 int main()
 {
-    Slinked_list my_list;
-    Node my_element;
-    int data = 3;
+   SingleLinkedList document_list;
 
-    /* FIXME(elsuizo: 2016-11-27) ver cuando conviene pasar por referencia y cuando por valor */
-    list_init(&my_list);
+   listlib_init_SingleLinkedList(&document_list);
 
-    list_insert_next(&my_list, &my_element, &data);
-    //int a = list_data(ptr_my_element);
-    display_Slinked_list(&my_list, (DISPLAY)display_fucking_number, "Number");
-    return 0;
+   Document* document1 = (Document*)malloc(sizeof(Document));
+
+   init_Document(document1, "baboon.jpg", "/home/elsuizo/Images", 73);
+
+   listlib_add_head(&document_list, document1);
+
+   listlib_display_SingleLinkedList(&document_list, (DISPLAY)display_Documents, "Documents");
+
+   Node* r1 = listlib_delete_Node_linus(&(document_list.head), document1);
+
+   printf("Node data delete:\n");
+
+   display_Documents(r1->data);
+
+   printf("After Delete\n");
+
+   listlib_display_SingleLinkedList(&document_list, (DISPLAY)display_Documents, "Documents");
+
+   deallocate_Documents(document1);
+
+   return 0;
 }

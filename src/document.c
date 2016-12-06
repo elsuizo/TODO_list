@@ -6,7 +6,7 @@
 @email martin.noblia@openmailbox.org
 
 @brief
-
+Documents and his methods
 @detail
 
 Licence:
@@ -24,8 +24,55 @@ You should have received a copy of the GNU General Public License
 ---------------------------------------------------------------------------*/
 #include "../inc/document.h"
 
+/**
+ * @brief evaluate if a Document is equal to another
+ *
+ * @param d1
+ * @param d2
+ *
+ * @return
+ */
 int compare_Documents(Document* d1, Document* d2) {
-
+   return strcmp(d1->name, d2->name);
 }
 
 
+/**
+ * @brief
+ *
+ * @param document
+ */
+void display_Documents(Document* document) {
+   printf("%s\t%s\t%d\n", document->name, document->path, document->size);
+}
+
+
+/**
+ * @brief Initialization of Documents
+ *
+ * @param d
+ * @param name
+ * @param path
+ * @param size
+ */
+void init_Document(Document* d, const char* name, const char* path, int size) {
+   /* set name */
+   d->name = (char*)malloc(strlen(name) + 1);
+   strcpy(d->name, name);
+   /* set path */
+   d->path = (char*)malloc(strlen(path) + 1);
+   strcpy(d->path, path);
+   /* set size */
+   d->size = size;
+
+}
+
+/**
+ * @brief
+ *
+ * @param document
+ */
+void deallocate_Documents(Document* document) {
+   free(document->name);
+   free(document->path);
+}

@@ -25,6 +25,10 @@ You should have received a copy of the GNU General Public License
 #ifndef DOCUMENT_H
 #define DOCUMENT_H
 
+#include<string.h>
+#include<stdlib.h>
+#include<stdio.h>
+
 /*-------------------------------------------------------------------------
                               custom datatypes
   -------------------------------------------------------------------------*/
@@ -32,13 +36,16 @@ typedef struct _document {
    char* name;
    char* path;
    int   size;
-} Document;
+} Document; 
+
+
+
 /*-------------------------------------------------------------------------
                               prototypes
   -------------------------------------------------------------------------*/
 int compare_Documents(Document* d1, Document* d2);
 void display_Documents(Document* document);
 void deallocate_Documents(Document* Document);
-void init_Document(Document d, const char* name, const char* path, int size);
+void init_Document(Document* d, const char* name, const char* path, int size);
 
 #endif
