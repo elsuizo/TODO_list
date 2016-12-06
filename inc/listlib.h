@@ -56,7 +56,7 @@ void   listlib_init_Slinked_list(SingleLinkedList*     list);
 int    listlib_add_head(SingleLinkedList*              list,   void*    data);
 int    listlib_add_tail(SingleLinkedList*              list,   void*    data);
 int    listlib_delete_Node(SingleLinkedList*           list,   Node*    node);
-Node*  listlib_delete_Node_linus(Node**            head,   void*    data);
+Node*  listlib_delete_Node_linus(Node**                head,   void*    data);
 Node*  listlib_get_Node(SingleLinkedList*              list,   COMPARE  compare_func,  void*  data);
 void   listlib_display_Slinked_list(SingleLinkedList*  list,   DISPLAY  display_func,  char*  name);
 

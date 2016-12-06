@@ -34,23 +34,23 @@ int main()
 
    Document* document1 = (Document*)malloc(sizeof(Document));
 
-   init_Document(document1, "baboon.jpg", "/home/elsuizo/Images", 73);
+   document_init(document1, "baboon.jpg", "/home/elsuizo/Images", 73);
 
    listlib_add_head(&document_list, document1);
 
-   listlib_display_SingleLinkedList(&document_list, (DISPLAY)display_Documents, "Documents");
+   listlib_display_SingleLinkedList(&document_list, (DISPLAY)document_display, "Documents");
 
    Node* r1 = listlib_delete_Node_linus(&(document_list.head), document1);
 
    printf("Node data delete:\n");
 
-   display_Documents(r1->data);
+   document_display(r1->data);
 
    printf("After Delete\n");
 
-   listlib_display_SingleLinkedList(&document_list, (DISPLAY)display_Documents, "Documents");
+   listlib_display_SingleLinkedList(&document_list, (DISPLAY)document_display, "Documents");
 
-   deallocate_Documents(document1);
+   document_destroy(document1);
 
    return 0;
 }

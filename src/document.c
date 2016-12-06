@@ -32,7 +32,7 @@ You should have received a copy of the GNU General Public License
  *
  * @return
  */
-int compare_Documents(Document* d1, Document* d2) {
+int document_compare(Document* d1, Document* d2) {
    return strcmp(d1->name, d2->name);
 }
 
@@ -42,7 +42,7 @@ int compare_Documents(Document* d1, Document* d2) {
  *
  * @param document
  */
-void display_Documents(Document* document) {
+void document_display(Document* document) {
    printf("%s\t%s\t%d\n", document->name, document->path, document->size);
 }
 
@@ -55,7 +55,7 @@ void display_Documents(Document* document) {
  * @param path
  * @param size
  */
-void init_Document(Document* d, const char* name, const char* path, int size) {
+void document_init(Document* d, const char* name, const char* path, int size) {
    /* set name */
    d->name = (char*)malloc(strlen(name) + 1);
    strcpy(d->name, name);
@@ -72,7 +72,7 @@ void init_Document(Document* d, const char* name, const char* path, int size) {
  *
  * @param document
  */
-void deallocate_Documents(Document* document) {
+void document_destroy(Document* document) {
    free(document->name);
    free(document->path);
 }

@@ -43,9 +43,9 @@ typedef struct _document {
 /*-------------------------------------------------------------------------
                               prototypes
   -------------------------------------------------------------------------*/
-int compare_Documents(Document* d1, Document* d2);
-void display_Documents(Document* document);
-void deallocate_Documents(Document* Document);
-void init_Document(Document* d, const char* name, const char* path, int size);
+int document_compare(Document* d1, Document* d2);
+void document_display(Document* document);
+void document_destroy(Document* Document);
+void document_init(Document* d, const char* name, const char* path, int size);
 
 #endif
