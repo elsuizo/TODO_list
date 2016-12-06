@@ -39,6 +39,9 @@ typedef struct _node {
    struct _node* next;
 }Node;
 
+/**
+ * @brief Single linked list data type
+ */
 typedef struct _singleLinkedList {
    Node* head;
    Node* tail;
@@ -46,19 +49,28 @@ typedef struct _singleLinkedList {
    uint8_t size;
 }SingleLinkedList;
 
+/**
+ * @brief Double linked list data type
+ */
+typedef struct _doubleLinkedList {
+   void* data;
+   struct _doubleLinkedList* previous;
+   struct _doubleLinkedList* next;
+}DoubleLinkedList;
+
 typedef void(*DISPLAY)(void*); /* return void take void */
 typedef int(*COMPARE)(void*, void*); /* return int, take two void */
 
 /*-------------------------------------------------------------------------
                               prototypes
 -------------------------------------------------------------------------*/
-void   listlib_init_Slinked_list(SingleLinkedList*     list);
+void   listlib_init_SingleLinkedList(SingleLinkedList*     list);
 int    listlib_add_head(SingleLinkedList*              list,   void*    data);
 int    listlib_add_tail(SingleLinkedList*              list,   void*    data);
 int    listlib_delete_Node(SingleLinkedList*           list,   Node*    node);
 Node*  listlib_delete_Node_linus(Node**                head,   void*    data);
 Node*  listlib_get_Node(SingleLinkedList*              list,   COMPARE  compare_func,  void*  data);
-void   listlib_display_Slinked_list(SingleLinkedList*  list,   DISPLAY  display_func,  char*  name);
+void   listlib_display_SingleLinkedList(SingleLinkedList*  list,   DISPLAY  display_func,  char*  name);
 
 /*-------------------------------------------------------------------------
                               macros
