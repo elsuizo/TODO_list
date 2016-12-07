@@ -23,24 +23,24 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 ---------------------------------------------------------------------------*/
 
-#include "../inc/listlib.h"
+#include "../inc/single_linked_list.h"
 #include "../inc/document.h"
 
 int main()
 {
    SingleLinkedList document_list;
 
-   listlib_init_SingleLinkedList(&document_list);
+   single_linked_list_init(&document_list);
 
    Document* document1 = (Document*)malloc(sizeof(Document));
 
    document_init(document1, "baboon.jpg", "/home/elsuizo/Images", 73);
 
-   listlib_add_head(&document_list, document1);
+   single_linked_list_add_head(&document_list, document1);
 
-   listlib_display_SingleLinkedList(&document_list, (DISPLAY)document_display, "Documents");
+   single_linked_list_display(&document_list, (DISPLAY)document_display, "Documents");
 
-   Node* r1 = listlib_delete_Node_linus(&(document_list.head), document1);
+   Node* r1 = single_linked_list_delete_Node_linus(&(document_list.head), document1);
 
    printf("Node data delete:\n");
 
@@ -48,7 +48,7 @@ int main()
 
    printf("After Delete\n");
 
-   listlib_display_SingleLinkedList(&document_list, (DISPLAY)document_display, "Documents");
+   single_linked_list_display(&document_list, (DISPLAY)document_display, "Documents");
 
    document_destroy(document1);
 
