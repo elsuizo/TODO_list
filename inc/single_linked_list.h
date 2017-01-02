@@ -56,13 +56,13 @@ typedef int(*COMPARE)(void*, void*); /* return int, take two void */
 /*-------------------------------------------------------------------------
                               prototypes
 -------------------------------------------------------------------------*/
-void   single_linked_list_init(SingleLinkedList*         list);
-int    single_linked_list_add_head(SingleLinkedList*     list,   void*    data);
-int    single_linked_list_add_tail(SingleLinkedList*     list,   void*    data);
-int    single_linked_list_delete_Node(SingleLinkedList*  list,   Node*    node);
-Node*  single_linked_list_delete_Node_linus(Node**       head,   void*    data);
-Node*  single_linked_list_get_Node(SingleLinkedList*     list,   COMPARE  compare_func,  void*  data);
-void   single_linked_list_display(SingleLinkedList*      list,   DISPLAY  display_func,  char*  name);
+void single_linked_list_init(SingleLinkedList* list);
+int single_linked_list_add_head(SingleLinkedList* list, void* data);
+int single_linked_list_add_tail(SingleLinkedList* list, void* data);
+int single_linked_list_delete_Node(SingleLinkedList* list, Node* node);
+Node*  single_linked_list_delete_Node_linus(Node** head, void* data);
+Node*  single_linked_list_get_Node(SingleLinkedList* list, COMPARE  compare_func, void* data);
+void single_linked_list_display(SingleLinkedList* list, DISPLAY  display_func, char* name);
 
 /*-------------------------------------------------------------------------
                               macros
